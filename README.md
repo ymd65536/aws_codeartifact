@@ -113,6 +113,16 @@ CodeArtifactでパッケージを配布する場合はパッケージを保存�
     - 9.7.1
 - yarn
     - 3.6.0
+- AWS CLI
+    - aws-cli/2.12.1 Python/3.11.4 Darwin/22.5.0 source/arm64 prompt/off
+
+### GitHubからコードを持ってくる
+
+デスクトップに今回利用するリポジトリをクローンします。
+
+```sh
+git clone https://github.com/ymd65536/aws_codeartifact.git ~/Desktop/aws_codeartifact && cd ~/Desktop/aws_codeartifact/
+```
 
 ### 環境変数のセット
 
@@ -201,7 +211,7 @@ aws codeartifact list-packages --domain $AWS_DOMAIN --repository $REPOSITORY_NAM
 ```
 
 ```sh
-cd ~/Desktop/aws_codeartifact/sample-package
+cd ./sample-package
 ```
 
 CodeArtifactにパッケージを登録します。
@@ -222,7 +232,7 @@ aws codeartifact list-packages --domain $AWS_DOMAIN --repository $REPOSITORY_NAM
 サンプルアプリケーションの`sample-app`に作成したパッケージを読み込みます。
 
 ```sh
-cd ~/Desktop/aws_codeartifact/sample-app
+cd ../sample-app
 ```
 
 `npm install`を実行して`index.js`を実行します。
@@ -250,3 +260,9 @@ yarn config set npmRegistryServer ""
 yarn config set 'npmRegistries["$CODEARTIFACT_URL"].npmAlwaysAuth' "false"
 npm config set registry ""
 ```
+
+## まとめ
+
+CodeArtifactを使うことで自身の利用するパッケージをAWS上に置いておくことができます。
+ハンズオンでは自分の作成したパッケージを置くだけに留まりましたが、既に配布されているOSSを保管することも可能ですので興味がある人は試してみると良いでしょう。
+
